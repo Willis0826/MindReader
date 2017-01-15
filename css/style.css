@@ -5,6 +5,9 @@ body{
   overflow: hidden;
 }
 
+#greeting{
+  padding-top: 100px;
+}
 /* 對話訊息框 初始隱藏 */
 #question{
   display: none;
@@ -154,6 +157,17 @@ h3.contain-sub{
   color: rgba(255, 255, 255, 0.5);
 }
 
+.job-wrap{
+  background-color: rgba(255,255,255,.5);
+  display: inline-block;
+  padding: 10px;
+  font-weight: 600;
+  margin: 5px;
+  font-size: 20px;
+  width: 102px;
+  text-align: center;
+}
+
 .btn-white{
   font-size: 30px;
   color: white;
@@ -165,6 +179,13 @@ h3.contain-sub{
 
 textarea:focus{
   outline: none;
+}
+
+/* 職位清單推擠  低於螢幕 */
+@media screen and (max-width: 1255px) {
+  #greeting{
+    padding-top: 50px;
+  }
 }
 
 /* col-sm 992 */
