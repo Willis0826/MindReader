@@ -89,7 +89,7 @@ body{
   margin: 5px 10px 5px 30px;
   float: right;
   border-radius: 5px 15px;
-  max-width: 190px;
+  max-width: 235px;
   word-wrap: break-word;
   display: inline-table;
 }
@@ -100,7 +100,7 @@ body{
   margin: 5px 30px 5px 10px;
   float: left;
   border-radius: 15px 5px;
-  max-width: 190px;
+  max-width: 235px;
   word-wrap: break-word;
   display: inline-table;
 }
