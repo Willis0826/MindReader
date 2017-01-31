@@ -4,10 +4,6 @@ $(document).ready(function () {
   bg1 = document.getElementsByClassName('full-res-bg1')[0];
   bg2 = document.getElementsByClassName('full-res-bg2')[0];
 
-  $("body").mousemove(function(event){
-    UpdateBgPosByPercent(event.clientX/$(window).width(), event.clientY/$(window).height());
-  });
-
 });
 
 var activedMesBoxArray = [];
@@ -18,6 +14,7 @@ var questionPool;
 var greenBtn = document.getElementById('greenBtn');
 greenBtn.onclick = InitChecking;//開始事件
 var redBtn = document.getElementById('redBtn');
+redBtn.onclick = ShowUpGreeting;
 //不可到達描述
 function Exclude(id,bool){
   this.id = id;
@@ -75,11 +72,10 @@ QuestionPool.prototype.findQuestionIndexById = function (questionId) {
   return questionIndex;//回傳Index
 };
 QuestionPool.prototype.InitChecking = function () {
-  AddMsg('msg_A','開始吧 !');
   greenBtn.innerHTML = "是的";
   redBtn.innerHTML = "不是";
   //this.RandomQuestion(Math.floor(Math.random() * this.pool.length));//隨機出題
-  this.RandomQuestion(1);
+  this.RandomQuestion(1);//從第一題開始，固定結構
 };
 QuestionPool.prototype.RandomQuestion = function(recommandQuestionId){
   if(this.pool.length != 0 && recommandQuestionId != null){
@@ -91,22 +87,19 @@ QuestionPool.prototype.RandomQuestion = function(recommandQuestionId){
     AddMsg('msg_B', question.topic);
   }
   else{//答案
-    AddMsg('msg_B', '我知道了 !');
-    AddMsg('msg_B', '你的答案有' + this.answerPool.bestAnswer.probability + '的機率是，' + this.answerPool.bestAnswer.title);
-    AddMsg('msg_B', '我是不是猜中了你心中的答案呢 ? 再來一次嗎')
+    AddMsg('msg_B', '你的答案有' + this.answerPool.bestAnswer.probability + '的機率是 : <span class="yellow-mark">' + this.answerPool.bestAnswer.title + "</span><br>我猜中了嗎 ?");
     greenBtn.innerHTML = "再來一次";
     greenBtn.onclick = InitChecking;
+    redBtn.onclick = WrongAnswerRecord;
   }
 }
 QuestionPool.prototype.ConfirmQuestionByIndex = function(){
-  AddMsg('msg_A', '是的');
   var recommandQuestionId = this.answerPool.reflashAnswer(new QuestionResult(this.pool[this.holdingQuestionIndex].id, true));
   this.DivPoolByExclude(new Exclude(this.pool[this.holdingQuestionIndex].id, true));//排除
   this.pool.splice(this.holdingQuestionIndex, 1);//刪除該index元素
   this.RandomQuestion(recommandQuestionId);//下一個問題
 }
 QuestionPool.prototype.DenyQuestionByIndex = function () {
-  AddMsg('msg_A', '不是');
   var recommandQuestionId = this.answerPool.reflashAnswer(new QuestionResult(this.pool[this.holdingQuestionIndex].id, false));
   this.DivPoolByExclude(new Exclude(this.pool[this.holdingQuestionIndex].id, false));//排除
   this.pool.splice(this.holdingQuestionIndex, 1);//刪除該index元素
@@ -227,7 +220,11 @@ function AddMsg(inner_class,text){
   var questionContainer = document.getElementsByClassName("msg_body")[0];
   if(questionContainer != null){
     questionContainer.innerHTML += "<div class='msg_line_holder'><div class=" + inner_class + ">" + text + "</div></div>";
-    questionContainer.scrollTop = questionContainer.scrollHeight;
+  }
+
+  var questionContainer = document.getElementsByClassName('msg_main_msg')[0];
+  if(questionContainer != null){
+    questionContainer.innerHTML = "<h3 class='inner-msg'>" + text + "</h3>";
   }
 }
 
@@ -246,22 +243,37 @@ questionPool.DivPoolByExclude(new Exclude(2, true));
 function ShowUpMsgBox(){
   document.getElementById('greeting').style.display = "none";
   document.getElementById('question').style.display = "block";
+  UpdateImgPos();
+}
+//我想想 點擊，回到一開始的畫面
+function ShowUpGreeting(){
+  document.getElementById('greeting').getElementsByClassName('contain-white')[0].style.background = "rgba(0,0,0,.8)";
+  document.getElementById('greeting').style.display = "block";
+  document.getElementById('question').style.display = "none";
+}
+//機器人猜錯
+function WrongAnswerRecord(){
+  //紀錄使用者錯誤回報
+  console.log(JSON.stringify(questionPool));
+  AddMsg("temp", "什麼 ! 我答錯了嗎 ? <br>下一次我會想得更清楚的，再一次。");
+}
+
+function UpdateImgPos(){
+  //人物
+  bg1.style.left = "50%";
+  bg1.style.marginLeft = "-" + (bg1.getClientRects()[0].width / 2.0) + "px"; //置中
+  bg1.style.bottom = "250px";
+  //水晶球
+  bg2.style.width = "450px";
+  bg2.style.height = "450px";
+  bg2.style.left = "50%";
+  bg2.style.marginLeft = "-" + (bg2.getClientRects()[0].width / 2.0) + "px";
+  bg2.style.padding = (bg2.getClientRects()[0].width / 4.5) + "px";
+  bg2.style.bottom = "50%";
+  bg2.style.marginBottom = "-375px";
 }
 
 //更新留言的內容
 function UpdateMesBoxContent(){
 
-}
-
-//背景圖片
-function UpdateBgPosByPercent(x_percent, y_percent){
-  var bg1_x = (x_percent - 0.5) * 40;
-  var bg1_y = -35 -(y_percent - 0.5) * 40;
-  var bg2_x = (x_percent - 0.5) * 10;
-  var bg2_y = -10 -(y_percent - 0.5) * 10;
-
-  bg1.style.left = bg1_x + "px";
-  bg1.style.bottom = bg1_y + "px";
-  bg2.style.left = bg2_x + "px";
-  bg2.style.bottom =  bg2_y + "px";
 }

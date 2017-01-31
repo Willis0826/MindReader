@@ -3,6 +3,7 @@ body{
   margin: 0px;
   height: 100%;
   overflow: hidden;
+  font-family: Microsoft JhengHei;
 }
 
 #greeting{
@@ -125,14 +126,25 @@ body{
   background-size: contain;
 }
 .full-res-bg2{
+  width: 250px;
+  height: 250px;
   position: absolute;
   bottom: 0;
-  left: 0px;
+  left: 125px;
   z-index: -1;
+  background: url("./../img/magicBall.png");
   background-repeat: no-repeat;
   background-position: 0px 5px;
   background-size: contain;
 }
+.full-res-bg2 .inner-msg{
+  font-weight: bold;
+}
+.yellow-mark{
+  color: #FFFD37;
+  font-size: 60px;
+}
+
 
 .contain-white{
   transition: all .2s ease-in-out;
