@@ -1,4 +1,5 @@
 var bg1,bg2,bg3;
+var isDebugMode = false;
 
 $(document).ready(function () {
   bg1 = document.getElementsByClassName('full-res-bg1')[0];
@@ -6,9 +7,6 @@ $(document).ready(function () {
 
 });
 
-var activedMesBoxArray = [];
-var message_array_A = [
-                      ];
 //遊戲
 var questionPool;
 var greenBtn = document.getElementById('greenBtn');
@@ -87,10 +85,10 @@ QuestionPool.prototype.RandomQuestion = function(recommandQuestionId){
     AddMsg('msg_B', question.topic);
   }
   else{//答案
-    AddMsg('msg_B', '你的答案有' + this.answerPool.bestAnswer.probability + '的機率是 : <span class="yellow-mark">' + this.answerPool.bestAnswer.title + "</span><br>我猜中了嗎 ?");
+    AddMsg('msg_B', '你的答案是 : <br><span class="yellow-mark">' + this.answerPool.bestAnswer.title + "</span><br>我猜中了嗎 ?");
     greenBtn.innerHTML = "再來一次";
     greenBtn.onclick = InitChecking;
-    redBtn.onclick = WrongAnswerRecord;
+    redBtn.onclick = WrongAnswerRecord;//line 257
   }
 }
 QuestionPool.prototype.ConfirmQuestionByIndex = function(){
@@ -159,42 +157,46 @@ AnswerPool.prototype.reflashAnswer = function (questionResult) {
         this.secondAnswer = this.bestAnswer;
         this.bestAnswer = this.answerList[i];
       }
-      console.log(this.answerList[i].title + " 目前機率 : " + this.answerList[i].probability);
+      if(isDebugMode){
+        console.log(this.answerList[i].title + " 目前機率 : " + this.answerList[i].probability);
+      }
     }
   }
   var recommandQuestionId = this.bestAnswer.recommandQuestionId();
-  console.log(recommandQuestionId);
+  if(isDebugMode){
+    console.log(recommandQuestionId);
+  }
   return recommandQuestionId;
 };
 
 function InitChecking(){
   questionPool = new QuestionPool();
-  questionPool.addQuestion(new Question(1,"第一題 : 這個工作需要常常與人接觸嗎 ?",[]));
-  questionPool.addQuestion(new Question(2,"第二題 : 工作的地點通常在辦公室裡嗎 ?",[]));
-  questionPool.addQuestion(new Question(3,"第三題 : 這是一個領月薪的工作嗎 ?",[]));
-  questionPool.addQuestion(new Question(4,"第四題 : 這個職業特別注重整潔 ?",[]));
-  questionPool.addQuestion(new Question(5,"第五題 : 這個職業的人非常重視紀律嗎 ?",[]));
-  questionPool.addQuestion(new Question(6,"第六題 : 這是一個生活規律，薪資穩定的職業 ?",[]));
-  questionPool.addQuestion(new Question(7,"第七題 : 出國機會多嗎 ?",[]));
-  questionPool.addQuestion(new Question(8,"第八題 : 需要領導能力 ?",[]));
-  questionPool.addQuestion(new Question(9,"第九題 : 這個職業的人會常常上電視嗎 ?",[]));
-  questionPool.addQuestion(new Question(10,"第十題 : 這份工作文筆能力很重要嗎 ?",[]));
-  questionPool.addQuestion(new Question(11,"第十一題 : 做這個工作口條要好嗎？",[]));
-  questionPool.addQuestion(new Question(12,"第十二題 : 這個職業有制服嗎 ?",[]));
-  questionPool.addQuestion(new Question(13,"第十三題 : 這個工作對體能有一定要求 ?",[]));
-  questionPool.addQuestion(new Question(14,"第十四題 : 這個職業周休二日嗎 ?",[]));
-  questionPool.addQuestion(new Question(15,"第十五題 : 要通過國家考試才可以做這份工作嗎 ?",[]));
-  questionPool.addQuestion(new Question(16,"第十六題 : 這個工作要熟悉至少兩種語言 ?",[]));
-  questionPool.addQuestion(new Question(17,"第十七題 : 這個職業的人對植物的生長有一定的了解嗎 ?",[]));
-  questionPool.addQuestion(new Question(18,"第十八題 : 這個工作要有天馬行空的想像力 ?",[]));
-  questionPool.addQuestion(new Question(19,"第十九題 : 這個工作必須了解程式語言嗎 ?",[]));
+  questionPool.addQuestion(new Question(1,"這個工作需要常常與人接觸嗎 ?",[]));
+  questionPool.addQuestion(new Question(2,"工作的地點通常在辦公室裡嗎 ?",[]));
+  questionPool.addQuestion(new Question(3,"這是一個領月薪的工作嗎 ?",[]));
+  questionPool.addQuestion(new Question(4,"這個職業特別注重整潔 ?",[]));
+  questionPool.addQuestion(new Question(5,"這個職業的人非常重視紀律嗎 ?",[]));
+  questionPool.addQuestion(new Question(6,"這是一個生活規律，薪資穩定的職業 ?",[]));
+  questionPool.addQuestion(new Question(7,"出國機會多嗎 ?",[]));
+  questionPool.addQuestion(new Question(8,"需要領導能力 ?",[]));
+  questionPool.addQuestion(new Question(9,"這個職業的人會常常上電視嗎 ?",[]));
+  questionPool.addQuestion(new Question(10,"這份工作文筆能力很重要嗎 ?",[]));
+  questionPool.addQuestion(new Question(11,"做這個工作口條要好嗎？",[]));
+  questionPool.addQuestion(new Question(12,"這個職業有制服嗎 ?",[]));
+  questionPool.addQuestion(new Question(13,"這個工作對體能有一定要求 ?",[]));
+  questionPool.addQuestion(new Question(14,"這個職業周休二日嗎 ?",[]));
+  questionPool.addQuestion(new Question(15,"要通過國家考試才可以做這份工作嗎 ?",[]));
+  questionPool.addQuestion(new Question(16,"這個工作要熟悉至少兩種語言 ?",[]));
+  questionPool.addQuestion(new Question(17,"這個職業的人對植物的生長有一定的了解嗎 ?",[]));
+  questionPool.addQuestion(new Question(18,"這個工作要有天馬行空的想像力 ?",[]));
+  questionPool.addQuestion(new Question(19,"這個工作必須了解程式語言嗎 ?",[]));
 
   var answerPool = new AnswerPool();
-  answerPool.AddAnswer(new Answer("軍人", [new QuestionResult(1, false), new QuestionResult(2, false), new QuestionResult(3, true), new QuestionResult(4, false), new QuestionResult(5, true), new QuestionResult(13, true)]));
-  answerPool.AddAnswer(new Answer("空服人員", [new QuestionResult(1, true),new QuestionResult(3, true), new QuestionResult(6, false), new QuestionResult(7, true), new QuestionResult(8, false), new QuestionResult(9, false)]));
-  answerPool.AddAnswer(new Answer("記者", [new QuestionResult(1, true), new QuestionResult(6, false), new QuestionResult(7, true), new QuestionResult(8, false), new QuestionResult(9, true), new QuestionResult(10, true)]));
+  answerPool.AddAnswer(new Answer("軍人", [new QuestionResult(1, false), new QuestionResult(2, false), new QuestionResult(3, true), new QuestionResult(4, false), new QuestionResult(5, true)]));
+  answerPool.AddAnswer(new Answer("空服人員", [new QuestionResult(1, true), new QuestionResult(2, false), new QuestionResult(7, true), new QuestionResult(8, false), new QuestionResult(9, false)]));
+  answerPool.AddAnswer(new Answer("記者", [new QuestionResult(1, true), new QuestionResult(2, false), new QuestionResult(7, true), new QuestionResult(8, false), new QuestionResult(9, true), new QuestionResult(10, true)]));
   answerPool.AddAnswer(new Answer("業務", [new QuestionResult(1, true), new QuestionResult(6, false), new QuestionResult(7, false), new QuestionResult(11, true)]));
-  answerPool.AddAnswer(new Answer("警察", [new QuestionResult(1, true), new QuestionResult(3, true), new QuestionResult(6, true), new QuestionResult(12, true), new QuestionResult(13, false), new QuestionResult(19, false)]));
+  answerPool.AddAnswer(new Answer("警察", [new QuestionResult(1, true), new QuestionResult(6, true), new QuestionResult(12, true), new QuestionResult(13, true)]));
   answerPool.AddAnswer(new Answer("翻譯", [new QuestionResult(1, false), new QuestionResult(2, true), new QuestionResult(14, false), new QuestionResult(15, false), new QuestionResult(16, true)]));
   answerPool.AddAnswer(new Answer("農夫", [new QuestionResult(1, false), new QuestionResult(2, false), new QuestionResult(3, false), new QuestionResult(17, true)]));
   answerPool.AddAnswer(new Answer("銀行員", [new QuestionResult(1, false), new QuestionResult(2, true), new QuestionResult(14, true), new QuestionResult(18, false), new QuestionResult(19, false)]));
@@ -228,11 +230,6 @@ function AddMsg(inner_class,text){
   }
 }
 
-/*
-questionPool.addQuestion(new Question(5,"第五題",[new Exclude(1,false), new Exclude(2,true)]));
-questionPool.addQuestion(new Question(6,"第六題",[new Exclude(1,true), new Exclude(3,false)]));
-questionPool.addQuestion(new Question(7,"第七題",[new Exclude(1,true), new Exclude(3,true)]));
-*/
 /*
 questionPool.DivPoolByExclude(new Exclude(1, true));
 questionPool.DivPoolByExclude(new Exclude(2, true));
