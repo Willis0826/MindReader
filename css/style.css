@@ -7,7 +7,7 @@ body{
 }
 
 #greeting{
-  padding-top: 100px;
+  padding-top: 50px;
 }
 /* 對話訊息框 初始隱藏 */
 #question{
@@ -167,6 +167,7 @@ h3.contain-sub{
   transition: all .2s ease-in-out;
   text-align: center;
   color: rgba(255, 255, 255, 0.5);
+  font-size: 22px;
 }
 
 .job-wrap{
@@ -175,8 +176,8 @@ h3.contain-sub{
   padding: 10px;
   font-weight: 600;
   margin: 5px;
-  font-size: 20px;
-  width: 102px;
+  font-size: 18px;
+  width: 95px;
   text-align: center;
 }
 
