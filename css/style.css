@@ -11,6 +11,7 @@ body{
 /* 對話訊息框 初始隱藏 */
 #question{
   display: none;
+  transition: all .2s ease-in-out;
 }
 
 .chat_box{
@@ -134,6 +135,12 @@ body{
   background: url("./../img/magicBall.png");
   background-repeat: no-repeat;
   background-position: 0px 5px;
+  background-size: contain;
+}
+.full-res-bg2-shine{
+  background: url("./../img/shineMagicBall.png");
+  background-repeat: no-repeat;
+  background-position: 0px -10px;
   background-size: contain;
 }
 .full-res-bg2 .inner-msg{

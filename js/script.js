@@ -1,8 +1,7 @@
-var bgStart,bg1,bg2,bgFinal;
+var bgStart,bg1,bg2;
 var isDebugMode = false;
 
 $(document).ready(function () {
-  bgFinal = document.getElementsByClassName('full-res-bgFinal')[0];
   bgStart = document.getElementsByClassName('full-res-bgStart')[0];
   bg1 = document.getElementsByClassName('full-res-bg1')[0];
   bg2 = document.getElementsByClassName('full-res-bg2')[0];
@@ -88,6 +87,7 @@ QuestionPool.prototype.RandomQuestion = function(recommandQuestionId){
     AddMsg('msg_B', question.topic);
   }
   else{//答案
+    bg2.className += " full-res-bg2-shine ";
     AddMsg('msg_B', '你的答案是 : <br><span class="yellow-mark">' + this.answerPool.bestAnswer.title + "</span><br>我猜中了嗎 ?");
     greenBtn.innerHTML = "再來一次";
     greenBtn.onclick = InitChecking;
@@ -173,6 +173,7 @@ AnswerPool.prototype.reflashAnswer = function (questionResult) {
 };
 
 function InitChecking(){
+  bg2.className = "full-res-bg2";
   questionPool = new QuestionPool();
   questionPool.addQuestion(new Question(1,"這個工作需要常常與人接觸嗎 ?",[]));
   questionPool.addQuestion(new Question(2,"工作的地點通常在辦公室裡嗎 ?",[]));
@@ -222,14 +223,16 @@ function InitChecking(){
 }
 
 function AddMsg(inner_class,text){
-  var questionContainer = document.getElementsByClassName("msg_body")[0];
-  if(questionContainer != null){
-    questionContainer.innerHTML += "<div class='msg_line_holder'><div class=" + inner_class + ">" + text + "</div></div>";
-  }
-
   var questionContainer = document.getElementsByClassName('msg_main_msg')[0];
+  var questionContainerParent = document.getElementById('question');
   if(questionContainer != null){
+    questionContainerParent.style.transition = "none";
+    questionContainerParent.style.opacity = 0;
     questionContainer.innerHTML = "<h3 class='inner-msg'>" + text + "</h3>";
+    setTimeout(function(){
+      questionContainerParent.style.transition = "all .5s ease-in-out";
+      questionContainerParent.style.opacity = 1;
+    }, 200);
   }
 }
 
@@ -255,6 +258,7 @@ function ShowUpGreeting(){
 }
 //機器人猜錯
 function WrongAnswerRecord(){
+  bg2.className = "full-res-bg2";
   //紀錄使用者錯誤回報
   console.log(JSON.stringify(questionPool));
   AddMsg("temp", "什麼 ! 我答錯了嗎 ? <br>下一次我會想得更清楚的，再一次。");
