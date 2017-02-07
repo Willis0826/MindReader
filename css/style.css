@@ -116,7 +116,7 @@ body{
   box-sizing: border-box;
 }
 
-.full-res-bg1{
+.full-res-bg1,.full-res-bgStart{
   position: absolute;
   bottom: 0;
   left: 0px;
@@ -193,6 +193,15 @@ textarea:focus{
   outline: none;
 }
 
+footer{
+  position: fixed;
+  height: 70px;
+  width: 100%;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.7);
+  color: rgba(255,255,255,0.7);
+}
+
 /* 職位清單推擠  低於螢幕 */
 @media screen and (max-width: 1255px) {
   #greeting{
@@ -213,5 +222,20 @@ textarea:focus{
 
   h3.contain-sub{
     color: rgba(255, 255, 255, 0.8);
+  }
+}
+/*縮小兼間距 緊密排版*/
+@media screen and (max-width: 892px) {
+  .job-wrap{
+    font-size: 15px;
+    width: 80px;
+    padding: 5px;
+  }
+  h2.contain-title{
+    font-size: 40px;
+  }
+
+  h3.contain-sub{
+    font-size: 20px;
   }
 }

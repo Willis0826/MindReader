@@ -1,10 +1,13 @@
-var bg1,bg2,bg3;
+var bgStart,bg1,bg2,bgFinal;
 var isDebugMode = false;
 
 $(document).ready(function () {
+  bgFinal = document.getElementsByClassName('full-res-bgFinal')[0];
+  bgStart = document.getElementsByClassName('full-res-bgStart')[0];
   bg1 = document.getElementsByClassName('full-res-bg1')[0];
   bg2 = document.getElementsByClassName('full-res-bg2')[0];
-
+  bg1.style.display = "none";
+  bg2.style.display = "none";
 });
 
 //遊戲
@@ -240,6 +243,8 @@ questionPool.DivPoolByExclude(new Exclude(2, true));
 function ShowUpMsgBox(){
   document.getElementById('greeting').style.display = "none";
   document.getElementById('question').style.display = "block";
+  bg1.style.display = "block";
+  bg2.style.display = "block";
   UpdateImgPos();
 }
 //我想想 點擊，回到一開始的畫面
@@ -256,11 +261,15 @@ function WrongAnswerRecord(){
 }
 
 function UpdateImgPos(){
+  //bgStart
+  bgStart.style.display = "none";
   //人物
+  bg1.style.display = "block";
   bg1.style.left = "50%";
   bg1.style.marginLeft = "-" + (bg1.getClientRects()[0].width / 2.0) + "px"; //置中
   bg1.style.bottom = "250px";
   //水晶球
+  bg2.style.display = "block";
   bg2.style.width = "450px";
   bg2.style.height = "450px";
   bg2.style.left = "50%";
