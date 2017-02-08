@@ -246,9 +246,9 @@ questionPool.DivPoolByExclude(new Exclude(2, true));
 //開始對話
 function ShowUpMsgBox(){
   document.getElementById('greeting').style.display = "none";
-  document.getElementById('question').style.display = "block";
+  document.getElementById('question').style.display = "table-cell";
   bg1.style.display = "block";
-  bg2.style.display = "block";
+  bg2.style.display = "table";
   greenBtn.className = "btn btn-success btn-block btn-lg";
   UpdateImgPos();
   InitChecking();//略過 greeting，直接 RandomQuestion
@@ -278,12 +278,13 @@ function UpdateImgPos(){
   bg1.style.bottom = "250px";
   //水晶球
   bg2.style.zIndex = "1000";
-  bg2.style.display = "block";
+  bg2.style.display = "table";
   bg2.style.width = "450px";
   bg2.style.height = "450px";
   bg2.style.left = "50%";
   bg2.style.marginLeft = "-" + (bg2.getClientRects()[0].width / 2.0) + "px";
   bg2.style.padding = (bg2.getClientRects()[0].width / 4.5) + "px";
+  bg2.style.paddingTop = (bg2.getClientRects()[0].width / 10) + "px";
   bg2.style.bottom = "50%";
   bg2.style.marginBottom = "-375px";
 }

@@ -18,6 +18,7 @@ body{
 #question{
   z-index: 1000;
   display: none;
+  vertical-align: middle;
   transition: all .2s ease-in-out;
 }
 
@@ -166,7 +167,7 @@ body{
   padding: 5px 10px;
 }
 .contain-white:hover{
-  padding: 15px 10px;
+  padding: 5px 10px;
   border-color: rgba(255, 255, 255, 0.7);
 }
 .contain-white:hover>h2.contain-title, .contain-white:hover>h3.contain-sub{
