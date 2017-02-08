@@ -204,6 +204,12 @@ h3.contain-sub{
 
 }
 
+.btn-four-word{
+  font-size: 15px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
 textarea:focus{
   outline: none;
 }

@@ -90,6 +90,7 @@ QuestionPool.prototype.RandomQuestion = function(recommandQuestionId){
     bg2.className += " full-res-bg2-shine ";
     AddMsg('msg_B', '你的答案是 : <br><span class="yellow-mark">' + this.answerPool.bestAnswer.title + "</span><br>我猜中了嗎 ?");
     greenBtn.innerHTML = "再來一次";
+    greenBtn.className += " btn-four-word ";
     greenBtn.onclick = ShowUpGreeting;
     redBtn.onclick = WrongAnswerRecord;//line 257
   }
@@ -181,7 +182,7 @@ function InitChecking(){
   questionPool.addQuestion(new Question(4,"這個職業特別注重整潔 ?",[]));
   questionPool.addQuestion(new Question(5,"這個職業的人非常重視紀律嗎 ?",[]));
   questionPool.addQuestion(new Question(6,"這是一個生活規律，薪資穩定的職業 ?",[]));
-  questionPool.addQuestion(new Question(7,"出國機會多嗎 ?",[]));
+  questionPool.addQuestion(new Question(7,"因為工作而出國機會多嗎 ?",[]));
   questionPool.addQuestion(new Question(8,"需要領導能力 ?",[]));
   questionPool.addQuestion(new Question(9,"這個職業的人會常常上電視嗎 ?",[]));
   questionPool.addQuestion(new Question(10,"這份工作文筆能力很重要嗎 ?",[]));
@@ -248,6 +249,7 @@ function ShowUpMsgBox(){
   document.getElementById('question').style.display = "block";
   bg1.style.display = "block";
   bg2.style.display = "block";
+  greenBtn.className = "btn btn-success btn-block btn-lg";
   UpdateImgPos();
   InitChecking();//略過 greeting，直接 RandomQuestion
 }
