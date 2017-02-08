@@ -90,7 +90,7 @@ QuestionPool.prototype.RandomQuestion = function(recommandQuestionId){
     bg2.className += " full-res-bg2-shine ";
     AddMsg('msg_B', '你的答案是 : <br><span class="yellow-mark">' + this.answerPool.bestAnswer.title + "</span><br>我猜中了嗎 ?");
     greenBtn.innerHTML = "再來一次";
-    greenBtn.onclick = InitChecking;
+    greenBtn.onclick = ShowUpGreeting;
     redBtn.onclick = WrongAnswerRecord;//line 257
   }
 }
@@ -217,7 +217,7 @@ function InitChecking(){
   answerPool.AddAnswer(new Answer("導遊", [new QuestionResult(1, true), new QuestionResult(6, false), new QuestionResult(7, true), new QuestionResult(8, true)]));
   answerPool.AddAnswer(new Answer("醫生", [new QuestionResult(1, true), new QuestionResult(6, true), new QuestionResult(12, true), new QuestionResult(13, false)]));
 
-
+  redBtn.style.display = "block";
   questionPool.addAnswerPool(answerPool);
   questionPool.InitChecking();
 }
@@ -249,6 +249,7 @@ function ShowUpMsgBox(){
   bg1.style.display = "block";
   bg2.style.display = "block";
   UpdateImgPos();
+  InitChecking();//略過 greeting，直接 RandomQuestion
 }
 //我想想 點擊，回到一開始的畫面
 function ShowUpGreeting(){
@@ -261,6 +262,7 @@ function WrongAnswerRecord(){
   bg2.className = "full-res-bg2";
   //紀錄使用者錯誤回報
   console.log(JSON.stringify(questionPool));
+  redBtn.style.display = "none";//red button hiddeen
   AddMsg("temp", "什麼 ! 我答錯了嗎 ? <br>下一次我會想得更清楚的，再一次。");
 }
 
@@ -273,6 +275,7 @@ function UpdateImgPos(){
   bg1.style.marginLeft = "-" + (bg1.getClientRects()[0].width / 2.0) + "px"; //置中
   bg1.style.bottom = "250px";
   //水晶球
+  bg2.style.zIndex = "1000";
   bg2.style.display = "block";
   bg2.style.width = "450px";
   bg2.style.height = "450px";
