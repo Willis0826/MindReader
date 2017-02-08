@@ -166,7 +166,14 @@ body{
   padding: 5px 10px;
 }
 .contain-white:hover{
+  padding: 15px 10px;
   border-color: rgba(255, 255, 255, 0.7);
+}
+.contain-white:hover>h2.contain-title, .contain-white:hover>h3.contain-sub{
+  color: rgba(255, 255, 255, 0.8);
+}
+.contain-white:hover .job-wrap{
+  background: rgba(255, 255, 255, 0.7);
 }
 
 h2.contain-title{
@@ -221,6 +228,13 @@ footer{
   bottom: 0;
   background-color: rgba(0,0,0,0.7);
   color: rgba(255,255,255,0.7);
+}
+
+footer a{
+  font-weight: 600;
+}
+footer a:hover{
+  text-decoration: none;
 }
 
 /* 職位清單推擠  低於螢幕 */
