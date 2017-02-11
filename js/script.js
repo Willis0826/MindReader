@@ -15,6 +15,8 @@ var greenBtn = document.getElementById('greenBtn');
 greenBtn.onclick = InitChecking;//開始事件
 var redBtn = document.getElementById('redBtn');
 redBtn.onclick = ShowUpGreeting;
+var againBtn = document.getElementById('againBtn');
+againBtn.onclick = ShowUpGreeting;
 //不可到達描述
 function Exclude(id,bool){
   this.id = id;
@@ -72,8 +74,7 @@ QuestionPool.prototype.findQuestionIndexById = function (questionId) {
   return questionIndex;//回傳Index
 };
 QuestionPool.prototype.InitChecking = function () {
-  greenBtn.innerHTML = "是的";
-  redBtn.innerHTML = "不是";
+
   //this.RandomQuestion(Math.floor(Math.random() * this.pool.length));//隨機出題
   this.RandomQuestion(1);//從第一題開始，固定結構
 };
@@ -88,10 +89,9 @@ QuestionPool.prototype.RandomQuestion = function(recommandQuestionId){
   }
   else{//答案
     bg2.className += " full-res-bg2-shine ";
-    AddMsg('msg_B', '你的答案是 : <br><span class="yellow-mark">' + this.answerPool.bestAnswer.title + "</span><br>我猜中了嗎 ?");
-    greenBtn.innerHTML = "再來一次";
-    greenBtn.className += " btn-four-word ";
-    greenBtn.onclick = ShowUpGreeting;
+    AddMsg('msg_B', '你想從事 : <br><span class="yellow-mark">' + this.answerPool.bestAnswer.title + "</span><br>我猜中了嗎 ?");
+    againBtn.style.display = "inline-block";
+    greenBtn.style.display = "none";
     redBtn.onclick = WrongAnswerRecord;//line 257
   }
 }
@@ -218,6 +218,8 @@ function InitChecking(){
   answerPool.AddAnswer(new Answer("導遊", [new QuestionResult(1, true), new QuestionResult(6, false), new QuestionResult(7, true), new QuestionResult(8, true)]));
   answerPool.AddAnswer(new Answer("醫生", [new QuestionResult(1, true), new QuestionResult(6, true), new QuestionResult(12, true), new QuestionResult(13, false)]));
 
+  againBtn.style.display = "none";
+  greenBtn.style.display = "block";
   redBtn.style.display = "block";
   questionPool.addAnswerPool(answerPool);
   questionPool.InitChecking();
@@ -249,7 +251,6 @@ function ShowUpMsgBox(){
   document.getElementById('question').style.display = "table-cell";
   bg1.style.display = "block";
   bg2.style.display = "table";
-  greenBtn.className = "btn btn-success btn-block btn-lg";
   UpdateImgPos();
   InitChecking();//略過 greeting，直接 RandomQuestion
 }

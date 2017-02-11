@@ -217,6 +217,51 @@ h3.contain-sub{
   padding-bottom: 12px;
 }
 
+.start-button-wrap, .yes-button-wrap, .no-button-wrap, .again-button-wrap{
+  display: inline-block;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.start-button-wrap:hover .button-text-wrap, .yes-button-wrap:hover .button-text-wrap, .no-button-wrap:hover .button-text-wrap, .again-button-wrap:hover .button-text-wrap{
+  background: #ffd966;
+}
+.start-button-wrap .button-text-wrap{
+  background: rgba(0,0,0,1);
+  border-radius: 4px;
+  color: #fff;
+  padding: 12px 35px;
+  padding-left: 65px;
+  margin-left: 40px
+}
+.yes-button-wrap .button-text-wrap{
+  background: #00cc99;
+  border-radius: 4px;
+  color: #fff;
+  padding: 10px 15px;
+  padding-left: 40px;
+}
+.no-button-wrap .button-text-wrap{
+  background: #ff0000;
+  border-radius: 4px;
+  color: #fff;
+  padding: 10px 15px;
+  padding-right: 40px;
+}
+.again-button-wrap .button-text-wrap{
+  background: #263b78;
+  border-radius: 4px;
+  color: #fff;
+  padding: 10px 10px;
+  padding-right: 5px;
+}
+
+.button-text-wrap>h2{
+  margin: 0;
+  font-size:20px;
+  font-weight: bold;
+}
+
 textarea:focus{
   outline: none;
 }
@@ -227,8 +272,8 @@ footer{
   height: 70px;
   width: 100%;
   bottom: 0;
-  background-color: rgba(0,0,0,0.7);
-  color: rgba(255,255,255,0.7);
+  background-color: rgba(255,255,255,0.4);
+  color: rgba(0,0,0,0.7);
 }
 
 footer a{
