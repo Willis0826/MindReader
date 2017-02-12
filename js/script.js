@@ -218,7 +218,10 @@ function InitChecking(){
   answerPool.AddAnswer(new Answer("導遊", [new QuestionResult(1, true), new QuestionResult(6, false), new QuestionResult(7, true), new QuestionResult(8, true)]));
   answerPool.AddAnswer(new Answer("醫生", [new QuestionResult(1, true), new QuestionResult(6, true), new QuestionResult(12, true), new QuestionResult(13, false)]));
 
+  //按鈕復原
   againBtn.style.display = "none";
+  againBtn.parentNode.className = "col-xs-6 text-center";
+  againBtn.style.marginLeft = "0px";
   greenBtn.style.display = "block";
   redBtn.style.display = "block";
   questionPool.addAnswerPool(answerPool);
@@ -265,6 +268,9 @@ function WrongAnswerRecord(){
   bg2.className = "full-res-bg2";
   //紀錄使用者錯誤回報
   console.log(JSON.stringify(questionPool));
+  //按鈕置中
+  againBtn.parentNode.className = "col-xs-12 text-center";
+  againBtn.style.marginLeft = "20px";
   redBtn.style.display = "none";//red button hiddeen
   AddMsg("temp", "什麼 ! 我答錯了嗎 ? <br>下一次我會想得更清楚的，再一次。");
 }
