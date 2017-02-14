@@ -1,4 +1,7 @@
-# MindReader
+# MindReader 職業讀心師
+![Alt text](/img/startMagic.png)
+### 關於職業讀心師
+網頁應用，問答判斷機器人，目前是固定結構。<br>
 ### 結構示意
 QuestionPool <br>
 &nbsp;&nbsp;|<br>
@@ -10,3 +13,4 @@ QuestionPool <br>
 &nbsp;&nbsp;|<br>
 &nbsp;&nbsp;|--Question[]<br>
   
+![Alt text](/img/ms-logo.png)
