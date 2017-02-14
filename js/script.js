@@ -214,7 +214,7 @@ function InitChecking(){
   answerPool.AddAnswer(new Answer("廣告設計", [new QuestionResult(1, false), new QuestionResult(2, true), new QuestionResult(14, true), new QuestionResult(18, true)]));
   answerPool.AddAnswer(new Answer("運動員", [new QuestionResult(1, false), new QuestionResult(2, false), new QuestionResult(3, false), new QuestionResult(17, false)]));
   answerPool.AddAnswer(new Answer("老師", [new QuestionResult(1, true), new QuestionResult(6, true), new QuestionResult(12, false)]));
-  answerPool.AddAnswer(new Answer("作者", [new QuestionResult(1, false), new QuestionResult(2, true), new QuestionResult(14, false), new QuestionResult(15, false), new QuestionResult(16, true)]));
+  answerPool.AddAnswer(new Answer("作者", [new QuestionResult(1, false), new QuestionResult(2, true), new QuestionResult(14, false), new QuestionResult(15, false), new QuestionResult(16, false)]));
   answerPool.AddAnswer(new Answer("律師", [new QuestionResult(1, false), new QuestionResult(2, true), new QuestionResult(14, false), new QuestionResult(15, true)]));
   answerPool.AddAnswer(new Answer("藝人", [new QuestionResult(1, true), new QuestionResult(6, false), new QuestionResult(7, true), new QuestionResult(8, false), new QuestionResult(9, true), new QuestionResult(10, false)]));
   answerPool.AddAnswer(new Answer("導遊", [new QuestionResult(1, true), new QuestionResult(6, false), new QuestionResult(7, true), new QuestionResult(8, true)]));
