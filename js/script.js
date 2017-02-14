@@ -1,5 +1,5 @@
 var bgStart,bg1,bg2;
-var isDebugMode = false;
+var isDebugMode = true;
 
 $(document).ready(function () {
   bgStart = document.getElementsByClassName('full-res-bgStart')[0];
@@ -102,6 +102,7 @@ QuestionPool.prototype.ConfirmQuestionByIndex = function(){
   this.RandomQuestion(recommandQuestionId);//下一個問題
 }
 QuestionPool.prototype.DenyQuestionByIndex = function () {
+  //拒絕之後，要依照權重來決定是否刪除該答案，並且重新設定第二解為答案
   var recommandQuestionId = this.answerPool.reflashAnswer(new QuestionResult(this.pool[this.holdingQuestionIndex].id, false));
   this.DivPoolByExclude(new Exclude(this.pool[this.holdingQuestionIndex].id, false));//排除
   this.pool.splice(this.holdingQuestionIndex, 1);//刪除該index元素
@@ -125,6 +126,7 @@ Answer.prototype.calcProbabilityByQuestionResult = function (q) {
       }
       else{
         this.questionResultList.splice(i, 1);//刪除該結果元素，以保持代問問題為最新
+        this.correctCount = 0;
       }
     }
   }
@@ -198,8 +200,8 @@ function InitChecking(){
 
   var answerPool = new AnswerPool();
   answerPool.AddAnswer(new Answer("軍人", [new QuestionResult(1, false), new QuestionResult(2, false), new QuestionResult(3, true), new QuestionResult(4, false), new QuestionResult(5, true)]));
-  answerPool.AddAnswer(new Answer("空服人員", [new QuestionResult(1, true), new QuestionResult(2, false), new QuestionResult(7, true), new QuestionResult(8, false), new QuestionResult(9, false)]));
-  answerPool.AddAnswer(new Answer("記者", [new QuestionResult(1, true), new QuestionResult(2, false), new QuestionResult(7, true), new QuestionResult(8, false), new QuestionResult(9, true), new QuestionResult(10, true)]));
+  answerPool.AddAnswer(new Answer("空服人員", [new QuestionResult(1, true), new QuestionResult(6, false), new QuestionResult(7, true), new QuestionResult(8, false), new QuestionResult(9, false)]));
+  answerPool.AddAnswer(new Answer("記者", [new QuestionResult(1, true), new QuestionResult(6, false), new QuestionResult(7, true), new QuestionResult(8, false), new QuestionResult(9, true), new QuestionResult(10, true)]));
   answerPool.AddAnswer(new Answer("業務", [new QuestionResult(1, true), new QuestionResult(6, false), new QuestionResult(7, false), new QuestionResult(11, true)]));
   answerPool.AddAnswer(new Answer("警察", [new QuestionResult(1, true), new QuestionResult(6, true), new QuestionResult(12, true), new QuestionResult(13, true)]));
   answerPool.AddAnswer(new Answer("翻譯", [new QuestionResult(1, false), new QuestionResult(2, true), new QuestionResult(14, false), new QuestionResult(15, false), new QuestionResult(16, true)]));
