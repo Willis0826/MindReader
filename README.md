@@ -1,5 +1,6 @@
 # MindReader 職業讀心師
-![Alt text](/img/startMagic.png)
+## *** 目前已至 React 框架，新的Github -> https://github.com/Willis0826/MindReaderReact/ <br>
+## *** This repository Won't be no longer updated.
 ### 關於職業讀心師
 網頁應用，問答判斷機器人，目前是固定結構。<br>
 ### 結構示意
