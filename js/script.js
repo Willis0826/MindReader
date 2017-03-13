@@ -115,7 +115,7 @@ QuestionPool.prototype.RandomQuestion = function(recommandQuestionId){
 
     }
     document.getElementById('effect_star').className += " in";
-    setTimeout(function(){document.getElementById('effect_star').className = '';},2000)
+    setTimeout(function(){document.getElementById('effect_star').className = '';},1000)
     AddMsg('msg_B', "<img width='80px' src=" + _answer_img + "><span class='yellow-mark'>" + _answer + "</span>");
     againBtn.style.display = "inline-block";
     greenBtn.style.display = "none";
