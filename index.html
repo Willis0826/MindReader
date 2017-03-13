@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+  <head>
+    <title>職業讀心師</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="shortcut icon" href="img/favicon.ico">
+  </head>
+  <body id="particles-js">
+    <div class="container-fluid">
+      <img src="img/startMagic.png" class="full-res-bgStart"/>
+      <img src="img/magicGirl.png" class="full-res-bg1" />
+      <div class="full-res-bg2" style="">
+        <div id="question" class="msg_main_wrap">
+          <img id="effect_star" src="img/star.png">
+          <div class="msg_main_msg">
+            <h3 class="inner-msg">我是擁有神秘力量的占卜師，只要你在心裡想著自己未來最想從事下列的哪一個職業，我就可以猜出來唷！</h3>
+          </div>
+          <div class="col-xs-6 text-center">
+            <!--Again 按鈕-->
+            <div id="againBtn" onclick="" class="again-button-wrap">
+              <div class="" style="position:absolute; margin-top: -10px; margin-left: -54px;">
+                <img style="width: 65px;" src="img/magic.png" alt="">
+              </div>
+              <div class="button-text-wrap">
+                <h2>再來一次</h2>
+              </div>
+            </div>
+            <!--Yes 按鈕-->
+            <div id="greenBtn" onclick="" class="yes-button-wrap">
+              <div class="" style="position:absolute; margin-top: -20px; margin-left: -40px;">
+                <img style="width: 80px;" src="img/hat.png" alt="">
+              </div>
+              <div class="button-text-wrap">
+                <h2>是的</h2>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-6 text-center">
+            <!--No 按鈕-->
+            <div id="redBtn" onclick="" class="no-button-wrap">
+              <div class="" style="position:absolute; margin-top: -20px; margin-right: -25px; right: 0;">
+                <img style="width: 80px;" src="img/water.png" alt="">
+              </div>
+              <div class="button-text-wrap">
+                <h2>不是</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="full-res-bg3"></div>
+      <div class="row">
+
+        <!-- Greeting Page -->
+        <div id="greeting" class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-12">
+          <div class="contain-white text-center">
+            <h2 class="contain-title">職業讀心師</h2>
+            <h3 class="contain-sub">我是擁有神秘力量的占卜師，只要你在心裡想著自己未來最想從事下列的哪一個職業，我就可以猜出來唷！</h3>
+            <div class="text-center" style="padding:10px 0px">
+              <div class="job-wrap">軍人</div>
+              <div class="job-wrap">空服員</div>
+              <div class="job-wrap">記者</div>
+              <div class="job-wrap">業務</div>
+              <div class="job-wrap">警察</div>
+              <div class="job-wrap">翻譯</div>
+              <div class="job-wrap">農夫</div>
+              <div class="job-wrap">銀行員</div>
+              <div class="job-wrap">工程師</div>
+              <div class="job-wrap">廚師</div>
+              <div class="job-wrap">建築師</div>
+              <div class="job-wrap">攝影師</div>
+              <div class="job-wrap">廣告設計</div>
+              <div class="job-wrap">運動員</div>
+              <div class="job-wrap">老師</div>
+              <div class="job-wrap">作家</div>
+              <div class="job-wrap">律師</div>
+              <div class="job-wrap">藝人</div>
+              <div class="job-wrap">導遊</div>
+              <div class="job-wrap">醫生</div>
+            </div>
+            <div onclick="ShowUpMsgBox()" class="start-button-wrap">
+              <div class="" style="position:absolute; margin-top: -20px;">
+                <img style="width: 80px;" src="img/crystal-ball.png" alt="">
+              </div>
+              <div class="button-text-wrap">
+                <h2>開始占卜</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="col-sm-4 col-sm-offset-4">
+            <h5 class="text-center" style="margin-bottom:5px;font-weight:600">未來生涯體驗計畫 | Copyright © 2017</h5>
+            <h5 class="text-center" style="margin-bottom:5px;margin-top:5px;">
+              <img src="img/ms-logo.png" style="height:35px;margin-top:-3px;" />
+            </h5>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="js/script.js" type="text/javascript"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="js/particles.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
+      particlesJS.load('particles-js', 'js/particlesjs.config.json', function() {
+        document.getElementsByClassName('particles-js-canvas-el')[0].style.position = "absolute";
+        document.getElementsByClassName('particles-js-canvas-el')[0].style.top = "0";
+        console.log('callback - particles.js config loaded');
+        window.dispatchEvent(new Event('resize'));
+      });
+    </script>
+  </body>
+</html>
