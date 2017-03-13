@@ -239,6 +239,7 @@ function InitChecking(){
   questionPool.addQuestion(new Question(24,"個性較委婉含蓄，不喜歡交際應酬",[],[0,0,0,1]));
   var answerPool = new AnswerPool();
   answerPool.AddAnswer(new Answer("答案", [new QuestionResult(1, false), new QuestionResult(2, false), new QuestionResult(3, true), new QuestionResult(4, false), new QuestionResult(5, true), new QuestionResult(6, true), new QuestionResult(7, true), new QuestionResult(8, true), new QuestionResult(9, true), new QuestionResult(10, true), new QuestionResult(11, true), new QuestionResult(12, true), new QuestionResult(13, true), new QuestionResult(14, true), new QuestionResult(15, true), new QuestionResult(16, true), new QuestionResult(17, true), new QuestionResult(18, true), new QuestionResult(19, true), new QuestionResult(20, true), new QuestionResult(21, true), new QuestionResult(22, true), new QuestionResult(23, true), new QuestionResult(24, true)]));
+
   //按鈕復原
   againBtn.style.display = "none";
   againBtn.parentNode.className = "col-xs-6 text-center";
